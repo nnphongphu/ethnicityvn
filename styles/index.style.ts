@@ -48,6 +48,7 @@ export const Button = styled.button`
 
 export const TextSlider = styled(Slider)`
   width: 100vw;
+  max-height: 160px;
   overflow: hidden;
   position: relative;
 `;
