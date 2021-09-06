@@ -1,22 +1,49 @@
 import Head from "next/head";
+import Link from "next/link";
 import Navbar from "components/Navbar";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import {
   Container,
+  Pattern,
   SlickSlider,
   TextSlider,
-  TitleContainer,
-  Logo,
-  H1,
+  WorkContainer,
+  Decoration,
+  WorkButtonDecoration,
+  WorkButton,
+  WorkButtonWrapper,
+  WorkSectionSubWrapper,
+  WorkButtonLabel,
+  WorkSectionWrapper,
   Button,
+  WorkSliderWrapper,
+  WorkSlider,
+  WorkSliderButton,
+  SlideContainer,
+  SlideThumbnail,
+  SlideTitle,
 } from "styles/index.style";
-import React, { useRef, useEffect } from "react";
+import { H1, H4, Logo } from "styles/system";
+import React, { useRef, useEffect, useState } from "react";
 
-export const Home: React.FC = () => {
-  const slider = useRef<any>(null);
+const navTheme = ["white", "black", "white", "black", "black"];
+
+export const Home = () => {
+  const [section, setSection] = useState(0);
+  const sliderRef = useRef<any>(null);
 
   const handleWheel = (e: WheelEvent) => {
-    if (e.deltaY > 0) slider.current.slickNext();
-    else slider.current.slickPrev();
+    if (e.deltaY > 0) {
+      sliderRef.current.slickNext();
+    } else {
+      sliderRef.current.slickPrev();
+    }
+  };
+
+  const handleBeforeChange = (oldIndex: any, newIndex: any) => {
+    setSection(newIndex);
   };
 
   useEffect(() => {
@@ -32,12 +59,26 @@ export const Home: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
-      <SlickSlider ref={slider} vertical arrows={false} infinite={false}>
+      <Navbar color={navTheme[section]} />
+      <Link href="/" passHref>
+        <Logo
+          url={navTheme[section] == "white" ? "/logo-white.png" : "/logo.png"}
+        />
+      </Link>
+      <SlickSlider
+        ref={sliderRef}
+        draggable={false}
+        speed={800}
+        vertical
+        arrows={false}
+        infinite={false}
+        beforeChange={handleBeforeChange}
+      >
         <LandingSection />
         <WorkSection />
         <ProcedureSection />
         <TeamSection />
+        <RecognitionSection />
       </SlickSlider>
     </>
   );
@@ -46,37 +87,118 @@ export const Home: React.FC = () => {
 export const LandingSection: React.FC = () => {
   return (
     <Container>
-      <Logo src="/logo.svg" />
-      <TextSlider vertical arrows={false} autoplay={true}>
-        <H1>Cultural inheritance</H1>
-        <H1>Creative interference</H1>
+      <Pattern src="/pattern.png" />
+      <TextSlider vertical arrows={false} autoplay={true} draggable={false}>
+        <H1 color="white">Cultural inheritance</H1>
+        <H1 color="white">Creative interference</H1>
       </TextSlider>
-      <Button>Pattern Library</Button>
+      <Button>
+        <H4>Pattern Library</H4>
+      </Button>
     </Container>
   );
 };
 
-export const WorkSection: React.FC = () => {
+interface Event {
+  title: string;
+  thumbnail: string;
+}
+
+export const WorkSlide: React.FC<Event> = ({ title, thumbnail }) => {
   return (
-    <TitleContainer>
-      <H1 black>Our Work</H1>
-    </TitleContainer>
+    <SlideContainer>
+      <SlideThumbnail src={thumbnail} />
+      <SlideTitle>{title}</SlideTitle>
+    </SlideContainer>
+  );
+};
+
+const events: Event[] = [
+  {
+    title: "Title 1",
+    thumbnail: "/sample1.png",
+  },
+  {
+    title: "Title 2",
+    thumbnail: "/sample2.png",
+  },
+];
+
+export const WorkSection: React.FC = () => {
+  const sliderRef = useRef<any>(null);
+
+  const handleClick = (delta: Number) => {
+    if (delta > 0) {
+      sliderRef.current.slickNext();
+    } else {
+      sliderRef.current.slickPrev();
+    }
+  };
+
+  return (
+    <WorkContainer>
+      <Decoration position="top" src="/workDecoration.png" />
+      <Decoration position="bottom" src="/workDecoration.png" />
+      <H1>Our Work</H1>
+      <WorkSliderWrapper>
+        <WorkSlider ref={sliderRef} arrows={false}>
+          {events.map(({ title, thumbnail }) => (
+            <WorkSlide key={title} title={title} thumbnail={thumbnail} />
+          ))}
+        </WorkSlider>
+        <WorkSliderButton
+          onClick={() => handleClick(1)}
+          type="next"
+          src="/nextButton.svg"
+        />
+        <WorkSliderButton
+          onClick={() => handleClick(-1)}
+          type="prev"
+          src="/prevButton.svg"
+        />
+      </WorkSliderWrapper>
+      <WorkSectionWrapper>
+        <WorkSectionSubWrapper>
+          <WorkButtonWrapper color="green">
+            <WorkButton src="workButton.svg" />
+            <WorkButtonLabel color="green">Projects</WorkButtonLabel>
+          </WorkButtonWrapper>
+          <WorkButtonWrapper color="red">
+            <WorkButton src="workButton.svg" />
+            <WorkButtonLabel color="red">Services</WorkButtonLabel>
+          </WorkButtonWrapper>
+          <WorkButtonWrapper color="yellow">
+            <WorkButton src="workButton.svg" />
+            <WorkButtonLabel color="yellow">On Media</WorkButtonLabel>
+          </WorkButtonWrapper>
+        </WorkSectionSubWrapper>
+        <WorkButtonDecoration src="/workButtonDecoration.svg" />
+      </WorkSectionWrapper>
+    </WorkContainer>
   );
 };
 
 export const ProcedureSection: React.FC = () => {
   return (
-    <TitleContainer>
-      <H1 black={true}>Our Procedure</H1>
-    </TitleContainer>
+    <WorkContainer>
+      <H1 color="black">Our Procedure</H1>
+    </WorkContainer>
   );
 };
 
 export const TeamSection: React.FC = () => {
   return (
-    <TitleContainer>
-      <H1 black={true}>Our Team</H1>
-    </TitleContainer>
+    <WorkContainer>
+      <H1 color="black">Our Team</H1>
+    </WorkContainer>
+  );
+};
+
+export const RecognitionSection: React.FC = () => {
+  return (
+    <WorkContainer>
+      <H1 color="black">Our Recognition</H1>
+    </WorkContainer>
   );
 };
 

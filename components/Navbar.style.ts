@@ -11,10 +11,8 @@ export const List = styled.li`
 `;
 
 export const Item = styled.ul`
-  color: white;
   margin-right: 100px;
-  font-size: x-large;
-  font-weight: bolder;
+  cursor: pointer;
 
   &:last-child {
     margin-right: 0;
