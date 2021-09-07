@@ -73,7 +73,7 @@ export const Home = () => {
       <Navbar color={navTheme[section]} />
       <Link href="/" passHref>
         <Logo
-          url={navTheme[section] == "white" ? "/logo-white.webp" : "/logo.webp"}
+          url={navTheme[section] == "white" ? "/logo-white.png" : "/logo.png"}
         />
       </Link>
       <SlickSlider
@@ -97,8 +97,8 @@ export const Home = () => {
 
 export const LandingSection: React.FC = () => {
   return (
-    <Container url="/landingPageBg.webp">
-      <Pattern width={915} height={764} src="/pattern.webp" />
+    <Container url="/landingPageBg.png">
+      <Pattern width={915} height={764} src="/pattern.png" />
       <TextSlider vertical arrows={false} autoplay={true} draggable={false}>
         <H1 color="white">Cultural inheritance</H1>
         <H1 color="white">Creative interference</H1>
@@ -127,11 +127,11 @@ export const WorkSlide: React.FC<Event> = ({ title, thumbnail }) => {
 const events: Event[] = [
   {
     title: "Title 1",
-    thumbnail: "/sample1.webp",
+    thumbnail: "/sample1.png",
   },
   {
     title: "Title 2",
-    thumbnail: "/sample2.webp",
+    thumbnail: "/sample2.png",
   },
 ];
 
@@ -152,13 +152,13 @@ export const WorkSection: React.FC = () => {
         width={1920}
         height={27}
         position="top"
-        src="/workDecoration.webp"
+        src="/workDecoration.png"
       />
       <Decoration
         width={1920}
         height={27}
         position="bottom"
-        src="/workDecoration.webp"
+        src="/workDecoration.png"
       />
       <H1>Our Work</H1>
       <WorkSliderWrapper>
@@ -241,8 +241,8 @@ export const ProcedureSection: React.FC = () => {
   };
 
   return (
-    <ProcedureContainer url="/procedureBg.webp">
-      <Decoration position="top" src="/procedureDecoration.webp" />
+    <ProcedureContainer url="/procedureBg.png">
+      <Decoration position="top" src="/procedureDecoration.png" />
       <H1 color="white">Our Procedure</H1>
       <SelectorContainer>
         <Line />
