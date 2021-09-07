@@ -73,7 +73,7 @@ export const Home = () => {
       <Navbar color={navTheme[section]} />
       <Link href="/" passHref>
         <Logo
-          url={navTheme[section] == "white" ? "/logo-white.png" : "/logo.png"}
+          url={navTheme[section] == "white" ? "/logo-white.webp" : "/logo.webp"}
         />
       </Link>
       <SlickSlider
@@ -97,8 +97,8 @@ export const Home = () => {
 
 export const LandingSection: React.FC = () => {
   return (
-    <Container url="/landingPageBg.png">
-      <Pattern src="/pattern.png" />
+    <Container url="/landingPageBg.webp">
+      <Pattern width={915} height={764} src="/pattern.webp" />
       <TextSlider vertical arrows={false} autoplay={true} draggable={false}>
         <H1 color="white">Cultural inheritance</H1>
         <H1 color="white">Creative interference</H1>
@@ -127,11 +127,11 @@ export const WorkSlide: React.FC<Event> = ({ title, thumbnail }) => {
 const events: Event[] = [
   {
     title: "Title 1",
-    thumbnail: "/sample1.png",
+    thumbnail: "/sample1.webp",
   },
   {
     title: "Title 2",
-    thumbnail: "/sample2.png",
+    thumbnail: "/sample2.webp",
   },
 ];
 
@@ -148,8 +148,18 @@ export const WorkSection: React.FC = () => {
 
   return (
     <WorkContainer>
-      <Decoration position="top" src="/workDecoration.png" />
-      <Decoration position="bottom" src="/workDecoration.png" />
+      <Decoration
+        width={1920}
+        height={27}
+        position="top"
+        src="/workDecoration.webp"
+      />
+      <Decoration
+        width={1920}
+        height={27}
+        position="bottom"
+        src="/workDecoration.webp"
+      />
       <H1>Our Work</H1>
       <WorkSliderWrapper>
         <WorkSlider ref={sliderRef} arrows={false}>
@@ -171,15 +181,15 @@ export const WorkSection: React.FC = () => {
       <WorkSectionWrapper>
         <WorkSectionSubWrapper>
           <WorkButtonWrapper color="green">
-            <WorkButton src="workButton.svg" />
+            <WorkButton width={498} height={229} src="workButton.svg" />
             <WorkButtonLabel color="green">Projects</WorkButtonLabel>
           </WorkButtonWrapper>
           <WorkButtonWrapper color="red">
-            <WorkButton src="workButton.svg" />
+            <WorkButton width={498} height={229} src="workButton.svg" />
             <WorkButtonLabel color="red">Services</WorkButtonLabel>
           </WorkButtonWrapper>
           <WorkButtonWrapper color="yellow">
-            <WorkButton src="workButton.svg" />
+            <WorkButton width={498} height={229} src="workButton.svg" />
             <WorkButtonLabel color="yellow">On Media</WorkButtonLabel>
           </WorkButtonWrapper>
         </WorkSectionSubWrapper>
@@ -231,8 +241,8 @@ export const ProcedureSection: React.FC = () => {
   };
 
   return (
-    <ProcedureContainer url="/procedureBg.png">
-      <Decoration position="top" src="/procedureDecoration.png" />
+    <ProcedureContainer url="/procedureBg.webp">
+      <Decoration position="top" src="/procedureDecoration.webp" />
       <H1 color="white">Our Procedure</H1>
       <SelectorContainer>
         <Line />
@@ -254,6 +264,8 @@ export const ProcedureSection: React.FC = () => {
                 <ProcedureIcon
                   src="/procedureIcon.svg"
                   id={index}
+                  width={187}
+                  height={132}
                   current={currentIndex}
                 />
                 <ProcedureLabel>{item.label}</ProcedureLabel>

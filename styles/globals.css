@@ -2,8 +2,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -15,4 +13,18 @@ a {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: SFU Futura_07;
+  src: url("/fonts/SFUFutura_07.woff2") format("woff2");
+  font-weight: bold;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: SFU Futura_03;
+  src: url("/fonts/SFUFutura_03.woff2") format("woff2");
+  font-weight: normal;
+  font-display: auto;
 }
