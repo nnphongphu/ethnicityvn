@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Slider from "react-slick";
-import { H2, H4 } from "styles/system";
+import { H2, H3, H4, B1 } from "styles/system";
 import { ReactSVG } from "react-svg";
 import { colorName } from "lib/types";
 
-export const Container = styled.div`
+export const Container = styled.div<{ url: string }>`
   background: var(--color-blue);
-  background-image: url("/landingPageBg.png");
+  background-image: url(${({ url }) => url});
   background-size: cover;
   background-position: bottom left;
   width: 101vw;
@@ -43,7 +43,7 @@ export const TextSlider = styled(Slider)`
 export const WorkContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  padding-top: 125px;
+  padding-top: 135px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,4 +140,90 @@ export const SlideTitle = styled(H2)`
   transform: translateX(-50%);
   bottom: 23px;
   color: white;
+`;
+
+export const ProcedureContainer = styled.div<{ url: string }>`
+  background: var(--color-blue);
+  background-image: url(${({ url }) => url});
+  background-size: cover;
+  background-position: bottom left;
+  width: 101vw;
+  height: 100vh;
+  margin-left: -1px;
+  padding-top: 6%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Line = styled.div`
+  height: 2px;
+  position: absolute;
+  top: 45%;
+  width: 100vw;
+  left: 0;
+  background-color: white;
+`;
+
+export const Selector = styled.img`
+  transform: translateX(-100%);
+`;
+
+export const SelectorContainer = styled.div`
+  margin-top: 10vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: calc(8vw + 116px);
+`;
+
+export const SelectorSubContainer = styled.div`
+  width: calc(84vw - 160px - 26px);
+  transition: all 0.2s ease-in-out;
+`;
+
+export const ProcedureMenuWrapper = styled.div`
+  display: flex;
+  margin-top: 45px;
+  width: 100vw;
+  padding: 0 8vw;
+  justify-content: space-between;
+  overflow: visible;
+`;
+
+export const ProcedureIconWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const ProcedureSeperator = styled.img``;
+
+export const ProcedureIcon = styled(ReactSVG)<{ id: any; current: any }>`
+  transition: all 0.2s ease-in-out;
+
+  & rect {
+    transition: all 0.2s ease-in-out;
+    fill: ${({ id, current }) => (id == current ? "white" : "transparent")};
+  }
+`;
+
+export const ProcedureLabel = styled(H3)`
+  color: white;
+  position: absolute;
+  width: max-content;
+  top: 100%;
+`;
+
+export const ProcedureBody = styled(B1)`
+  padding: 0 8vw;
+  margin-top: 15vh;
+  color: white;
+  text-align: center;
 `;
