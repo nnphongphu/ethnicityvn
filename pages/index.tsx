@@ -240,7 +240,7 @@ export const ProcedureSection: React.FC = () => {
           <Selector src="/procedureSelector.svg" />
         </SelectorSubContainer>
       </SelectorContainer>
-      <ProcedureMenuWrapper>
+      <ProcedureMenuWrapper onMouseLeave={() => handleHover(currentIndex)}>
         {procedureMenu.map((item, index) => {
           return (
             <React.Fragment key={item.label}>
@@ -249,7 +249,6 @@ export const ProcedureSection: React.FC = () => {
               )}
               <ProcedureIconWrapper
                 onMouseEnter={() => handleHover(index)}
-                onMouseLeave={() => handleHover(currentIndex)}
                 onClick={() => handleClick(index)}
               >
                 <ProcedureIcon

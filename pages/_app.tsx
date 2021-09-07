@@ -6,7 +6,7 @@ export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyle />
-      <NextProgress delay={300} options={{ showSpinner: false }} />
+      <NextProgress delay={300} options={{ showSpinner: true }} />
       <Component {...pageProps} />
     </>
   );
