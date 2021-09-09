@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { ReactSVG } from "react-svg";
 import { H2, H4 } from "styles/system";
 import Slider from "react-slick";
@@ -7,13 +8,14 @@ import { colorName } from "lib/types";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  padding-top: 135px;
+  padding-top: 100px;
   margin-left: -1px;
   margin-top: -1px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  overflow: hidden;
 `;
 
 export const Decoration = styled.img<{ position: "top" | "bottom" | string }>`
@@ -26,9 +28,14 @@ export const NavWrapper = styled.div`
   position: relative;
 `;
 
-export const ButtonDecoration = styled.img``;
+export const ButtonDecoration = styled.img`
+  width: 1683px;
+  height: 229px;
+`;
 
 export const Button = styled(ReactSVG)`
+  width: 398px;
+  height: 229px;
   & rect {
     transition: all 0.2s ease-in-out;
   }
@@ -88,10 +95,7 @@ export const SlideWrapper = styled.div`
   position: relative;
 `;
 
-export const SlideThumbnail = styled.img`
-  width: 100%;
-  height: 100%;
-`;
+export const SlideThumbnail = styled(Image)``;
 
 export const SlideTitle = styled(H2)`
   max-width: 100%;

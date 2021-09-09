@@ -89,7 +89,12 @@ interface Event {
 export const WorkSlide: React.FC<Event> = ({ title, thumbnail }) => {
   return (
     <SlideWrapper>
-      <SlideThumbnail src={thumbnail} />
+      <SlideThumbnail
+        src={thumbnail}
+        alt="thumbnail"
+        layout="fill"
+        priority={true}
+      />
       <SlideTitle>{title}</SlideTitle>
     </SlideWrapper>
   );

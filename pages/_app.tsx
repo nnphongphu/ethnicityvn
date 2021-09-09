@@ -1,7 +1,6 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "styles/slick.css";
 import "styles/globals.css";
 
 export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
@@ -13,12 +12,14 @@ export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
           href="/fonts/SFUFutura_07.woff2"
           as="font"
           type="font/woff2"
+          crossOrigin="anonymous"
         />
         <link
           rel="preload"
           href="/fonts/SFUFutura_03.woff2"
           as="font"
           type="font/woff2"
+          crossOrigin="anonymous"
         />
       </Head>
       <Component {...pageProps} />

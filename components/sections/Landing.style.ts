@@ -37,5 +37,6 @@ export const TextSlider = styled(Slider)`
 export const Pattern = styled.img`
   position: absolute;
   height: 68vh;
+  width: auto;
   right: 82px;
 `;

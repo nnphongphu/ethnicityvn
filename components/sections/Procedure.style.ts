@@ -72,6 +72,8 @@ export const NavItemWrapper = styled.div`
 export const NavSeperator = styled.img``;
 
 export const ItemIcon = styled(ReactSVG)<{ id: any; current: any }>`
+  width: 187px;
+  height: 132px;
   transition: all 0.2s ease-in-out;
 
   & rect {
@@ -84,7 +86,7 @@ export const ItemLabel = styled(H3)`
   color: white;
   position: absolute;
   width: max-content;
-  top: 100%;
+  top: 120%;
 `;
 
 export const Description = styled(B1)`
