@@ -1,11 +1,12 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
-import GlobalStyle from "styles/globals";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "styles/globals.css";
 
 export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <GlobalStyle />
       <Head>
         <link
           rel="preload"
