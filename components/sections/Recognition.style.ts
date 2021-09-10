@@ -4,14 +4,14 @@ import { H3, B1 } from "styles/system";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  margin-left: -1px;
-  margin-top: -1px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  max-width: 1920px;
+  margin: auto;
 `;
 
 export const Decoration = styled.img`

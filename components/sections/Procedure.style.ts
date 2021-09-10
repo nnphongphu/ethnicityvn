@@ -7,15 +7,15 @@ export const Container = styled.div<{ url: string }>`
   background-image: url(${({ url }) => url});
   background-size: cover;
   background-position: bottom left;
-  width: 101vw;
+  width: 100vw;
   height: 100vh;
-  margin-left: -1px;
-  margin-top: -1px;
-  padding-top: 6%;
+  padding-top: 135px;
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
+  max-width: 1925px;
+  margin: auto;
 `;
 
 export const Decoration = styled.img<{ position: "top" | "bottom" | string }>`
@@ -28,6 +28,7 @@ export const SelectorLine = styled.div`
   position: absolute;
   top: 45%;
   width: 100vw;
+  max-width: 1920px;
   left: 0;
   background-color: white;
 `;
@@ -37,17 +38,16 @@ export const Selector = styled.img`
 `;
 
 export const SelectorWrapper = styled.div`
-  margin-top: 10vh;
+  margin-top: 140px;
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-left: calc(8vw + 116px);
+  padding-left: calc(120px + 80px + 27px);
 `;
 
 export const SelectorSubWrapper = styled.div`
-  width: calc(84vw - 160px - 26px);
+  width: calc(1920px - 240px - 80px * 2 - 27px);
   transition: all 0.2s ease-in-out;
 `;
 
@@ -55,9 +55,10 @@ export const NavWrapper = styled.div`
   display: flex;
   margin-top: 45px;
   width: 100vw;
-  padding: 0 8vw;
+  padding: 0 120px;
   justify-content: space-between;
   overflow: visible;
+  max-width: 1920px;
 `;
 
 export const NavItemWrapper = styled.div`
@@ -90,8 +91,8 @@ export const ItemLabel = styled(H3)`
 `;
 
 export const Description = styled(B1)`
-  padding: 0 8vw;
-  margin-top: 15vh;
+  padding: 0 340px;
+  margin-top: 155px;
   color: white;
   text-align: center;
 `;

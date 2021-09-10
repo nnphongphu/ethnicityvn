@@ -8,6 +8,9 @@ export const List = styled.li`
   display: flex;
   justify-content: flex-end;
   z-index: 0;
+  max-width: 1920px;
+  left: 50%;
+  transform: translate(-50%);
 `;
 
 export const Item = styled.ul`

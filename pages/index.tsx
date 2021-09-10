@@ -6,6 +6,7 @@ import { Logo } from "styles/system";
 import LandingSection from "components/sections/Landing";
 import WorkSection from "components/sections/Work";
 import ProcedureSection from "components/sections/Procedure";
+import TeamSection from "components/sections/Team";
 import RecognitionSection from "components/sections/Recognition";
 import React, { useRef, useEffect, useState } from "react";
 import Modal from "react-modal";
@@ -61,6 +62,7 @@ export const Home = () => {
         <LandingSection />
         <WorkSection />
         <ProcedureSection />
+        <TeamSection />
         <RecognitionSection />
       </SlickSlider>
     </>

@@ -9,13 +9,13 @@ export const Container = styled.div<{ url: string }>`
   width: 100vw;
   height: 100vh;
   padding-left: 100px;
-  margin-left: -1px;
-  margin-top: -1px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
+  max-width: 1920px;
+  margin: auto;
 `;
 
 export const Button = styled.button`

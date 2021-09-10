@@ -44,6 +44,7 @@ export const B1 = styled.p<{ color?: string }>`
   font-weight: normal;
   letter-spacing: 1.05px;
   font-size: 21px;
+  line-height: 35px;
   color: var(--color-${({ color }) => (color ? color : "text")});
 `;
 
@@ -58,10 +59,14 @@ export const B2 = styled.span<{ color?: string }>`
 
 export const Logo = styled.a<{ url: string }>`
   background-image: url(${({ url }) => url});
+  background-repeat: no-repeat;
+  background-origin: content-box;
   top: 32px;
-  left: 100px;
-  width: 269px;
+  padding-left: 120px;
+  width: 1920px;
   height: 69px;
   position: absolute;
   transition: all 0.8s ease-in-out;
+  left: 50%;
+  transform: translate(-50%);
 `;
