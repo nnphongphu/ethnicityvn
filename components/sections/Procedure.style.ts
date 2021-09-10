@@ -47,7 +47,7 @@ export const SelectorWrapper = styled.div`
 `;
 
 export const SelectorSubWrapper = styled.div`
-  width: calc(1920px - 240px - 80px * 2 - 27px);
+  width: calc(100vw - 240px - 80px * 2 - 27px);
   transition: all 0.2s ease-in-out;
 `;
 
