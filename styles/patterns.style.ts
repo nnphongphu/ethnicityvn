@@ -9,6 +9,9 @@ export const Container = styled.div`
   position: relative;
   justify-content: space-between;
   overflow-y: hidden;
+  max-width: 1980px;
+  margin: auto;
+  max-height: 750px;
 `;
 
 export const Category = styled.div`

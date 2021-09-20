@@ -7,6 +7,7 @@ export const Container = styled.div`
   overflow: hidden;
   background-color: var(--color-red);
   z-index: -1;
+  margin: auto;
 `;
 
 export const SubContainer = styled.div`
