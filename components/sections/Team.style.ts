@@ -4,14 +4,29 @@ import { H1, B2 } from "styles/system";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  padding-top: 100px;
+  padding: 100px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   overflow: hidden;
   max-width: 1920px;
+  justify-content: space-around;
   margin: auto;
+
+  @media screen and (min-width: 2000px) {
+    justify-content: center;
+    row-gap: 50px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    padding: 100px 0px;
+  }
+
+  @media screen and (max-width: 1600px) {
+    padding-top: 13vh;
+    padding-bottom: 8vh;
+  }
 `;
 
 export const Decoration = styled.img<{ position: "top" | "bottom" | string }>`
@@ -22,12 +37,23 @@ export const Decoration = styled.img<{ position: "top" | "bottom" | string }>`
 export const Title = styled.div`
   cursor: pointer;
   overflow: hidden;
+  width: 970px;
+  height: 154px;
+
+  @media screen and (max-width: 1600px) {
+    height: 125px;
+    width: 700px;
+  }
 `;
 export const TitleSubWrapper = styled.div``;
 
 export const Description = styled.div`
   display: flex;
   align-items: center;
+  width: min(1110px, 50vw);
+  @media screen and (max-width: 1600px) {
+    height: 125px;
+  }
 `;
 
 export const Members = styled.div`
@@ -38,6 +64,10 @@ export const Members = styled.div`
   border-style: solid;
   align-items: center;
   column-gap: 50px;
+
+  @media screen and (max-width: 1600px) {
+    height: 125px;
+  }
 `;
 
 export const Member = styled.div<{ url: string }>`
@@ -49,6 +79,11 @@ export const Member = styled.div<{ url: string }>`
   background-position: center;
   background-size: cover;
   position: relative;
+
+  @media screen and (max-width: 1600px) {
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 export const Filler = styled.div`
@@ -56,6 +91,10 @@ export const Filler = styled.div`
   border-radius: 77px;
   background-color: var(--color-neutral);
   position: absolute;
+
+  @media screen and (max-width: 1600px) {
+    height: 125px;
+  }
 `;
 
 export const SpecialFiller = styled.div`
@@ -64,6 +103,10 @@ export const SpecialFiller = styled.div`
   background-color: var(--color-neutral);
   position: absolute;
   transition: all 0.5s ease-in-out;
+
+  @media screen and (max-width: 1600px) {
+    height: 125px;
+  }
 `;
 
 export const Position = styled(B2)`
@@ -84,15 +127,12 @@ export const Marketing = styled.div<{ state: boolean }>`
   display: flex;
   align-self: flex-start;
   height: 154px;
-  margin-top: 50px;
   transition: all 0.8s ease-in-out;
   position: relative;
   transform: ${({ state }) => (state ? "translate(-45%)" : "translate(0)")};
 
   ${Title} {
-    width: 970px;
     margin-left: 45px;
-    height: 154px;
     padding: 0px 82px;
     background-color: var(--color-green);
     border-radius: 80px;
@@ -112,9 +152,12 @@ export const Marketing = styled.div<{ state: boolean }>`
   }
 
   ${Description} {
-    margin-left: 108px;
-    width: 1110px;
+    margin-left: 70px;
     max-height: 154px;
+    width: 1100px;
+    @media screen and (max-width: 1600px) {
+      width: 900px;
+    }
   }
 
   ${Members} {
@@ -136,7 +179,6 @@ export const Research = styled.div<{ state: boolean }>`
   display: flex;
   align-self: flex-start;
   height: 154px;
-  margin-top: 50px;
   margin-left: 200px;
   transition: all 0.8s ease-in-out;
   position: relative;
@@ -144,11 +186,11 @@ export const Research = styled.div<{ state: boolean }>`
 
   ${Title} {
     margin-left: 45px;
-    height: 154px;
     padding: 0px 82px;
     padding-bottom: 8px;
     background-color: var(--color-red);
     border-radius: 80px;
+    width: auto;
   }
 
   ${TitleSubWrapper} {
@@ -168,7 +210,6 @@ export const Research = styled.div<{ state: boolean }>`
     transition: all 0.8s ease-in-out;
     opacity: ${({ state }) => (state ? "1" : "0")};
     margin-left: 108px;
-    width: 1110px;
     max-height: 154px;
   }
 
@@ -188,8 +229,16 @@ export const Research = styled.div<{ state: boolean }>`
 
   ${SpecialFiller} {
     width: 515px;
-    right: calc(1110px - 470px);
+    right: calc(min(1110px, 50vw) - 470px);
     opacity: ${({ state }) => (state ? "0" : "1")};
+
+    @media screen and (max-width: 1800px) {
+      right: 400px;
+    }
+
+    @media screen and (max-width: 1600px) {
+      right: 300px;
+    }
   }
 `;
 
@@ -197,19 +246,21 @@ export const Creative = styled.div<{ state: boolean }>`
   display: flex;
   align-self: flex-start;
   height: 154px;
-  margin-top: 50px;
   transition: all 0.8s ease-in-out;
   position: relative;
   transform: ${({ state }) => (state ? "translate(-40%)" : "translate(0)")};
 
   ${Title} {
-    width: 970px;
+    width: 1000px;
     margin-left: 45px;
-    height: 154px;
     padding: 0px 82px;
     padding-bottom: 8px;
     background-color: var(--color-blue);
     border-radius: 80px;
+
+    @media screen and (max-width: 1600px) {
+      width: 800px;
+    }
   }
 
   ${TitleSubWrapper} {
@@ -227,8 +278,11 @@ export const Creative = styled.div<{ state: boolean }>`
 
   ${Description} {
     margin-left: 108px;
-    width: 1110px;
     max-height: 154px;
+
+    @media screen and (max-width: 1600px) {
+      margin-left: 70px;
+    }
   }
 
   ${Members} {
@@ -244,4 +298,24 @@ export const Creative = styled.div<{ state: boolean }>`
     width: 500px;
     left: -430px;
   }
+`;
+
+export const MemberAvatar = styled.img`
+  width: auto;
+  height: 100%;
+`;
+
+export const MemberInfo = styled.div`
+  background-color: white;
+  margin: 5% 0%;
+  border-radius: 0px 50px 50px 0px;
+  padding: 35px 70px;
+  position: relative;
+`;
+
+export const CloseButton = styled.img`
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  cursor: pointer;
 `;

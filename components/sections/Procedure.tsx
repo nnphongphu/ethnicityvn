@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import {
   Container,
-  Decoration,
   Selector,
   SelectorLine,
   SelectorWrapper,
@@ -29,7 +28,6 @@ export const ProcedureSection: React.FC = () => {
 
   return (
     <Container url="/procedureBg.png">
-      <Decoration position="top" src="/procedureDecoration.png" />
       <H1 color="white">Our Procedure</H1>
       <SelectorWrapper>
         <SelectorLine />

@@ -56,17 +56,3 @@ export const B2 = styled.span<{ color?: string }>`
   font-size: 14px;
   color: var(--color-${({ color }) => (color ? color : "text")});
 `;
-
-export const Logo = styled.a<{ url: string }>`
-  background-image: url(${({ url }) => url});
-  background-repeat: no-repeat;
-  background-origin: content-box;
-  top: 32px;
-  padding-left: 120px;
-  width: 1920px;
-  height: 69px;
-  position: absolute;
-  transition: all 0.8s ease-in-out;
-  left: 50%;
-  transform: translate(-50%);
-`;

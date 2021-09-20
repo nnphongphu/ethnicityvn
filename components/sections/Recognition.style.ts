@@ -12,6 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
   max-width: 1920px;
   margin: auto;
+  padding-top: 50px;
 `;
 
 export const Decoration = styled.img`
@@ -21,20 +22,28 @@ export const Decoration = styled.img`
 
 export const ContentWrapper = styled.div`
   width: 100%;
-  padding: 0 150px;
+  padding: 0 120px;
   margin-top: 6vh;
   margin-bottom: 110px;
   display: flex;
+
+  @media screen and (max-width: 1600px) {
+    margin-top: 3vh;
+  }
 `;
 
 export const HighlightWrapper = styled.div`
-  max-width: 650px;
+  width: 700px;
   height: fit-content;
   border-width: 1px;
   border-style: solid;
   border-color: var(--color-red);
   padding: 50px;
   position: relative;
+
+  @media screen and (max-width: 1600px) {
+    width: 800px;
+  }
 `;
 
 export const TriangleLeft = styled.div`
@@ -74,12 +83,20 @@ export const HighlightTitle = styled(H3)``;
 
 export const HighlightContent = styled(B1)`
   margin-top: 20px;
+
+  @media screen and (max-width: 1600px) {
+    margin-top: 10px;
+  }
 `;
 
 export const PresentationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 158px;
+
+  @media screen and (max-width: 1600px) {
+    margin-left: 100px;
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -87,7 +104,14 @@ export const LogoWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Logo = styled.img``;
+export const Logo = styled.img`
+  height: 10vh;
+  width: auto;
+
+  @media screen and (min-width: 1800px) {
+    height: 110px;
+  }
+`;
 
 export const Footer = styled.div`
   position: absolute;
@@ -98,4 +122,8 @@ export const Footer = styled.div`
   width: 100%;
   padding: 25px 0;
   background-color: var(--color-red);
+
+  @media screen and (max-width: 1600px) {
+    padding: 10px 0;
+  }
 `;

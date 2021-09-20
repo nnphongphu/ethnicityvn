@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { H1 } from "styles/system";
 import {
   Container,
-  Decoration,
   SliderWrapper,
   WorkSlider,
   SliderButton,
@@ -29,19 +28,7 @@ export const WorkSection: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Decoration
-        width={1920}
-        height={27}
-        position="top"
-        src="/workDecoration.png"
-      />
-      <Decoration
-        width={1920}
-        height={27}
-        position="bottom"
-        src="/workDecoration.png"
-      />
+    <Container url="/workBg.svg">
       <H1>Our Work</H1>
       <SliderWrapper>
         <WorkSlider ref={sliderRef} arrows={false}>

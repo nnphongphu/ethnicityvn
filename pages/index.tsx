@@ -1,8 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
 import Navbar from "components/Navbar";
 import { SlickSlider } from "styles/index.style";
-import { Logo } from "styles/system";
 import LandingSection from "components/sections/Landing";
 import WorkSection from "components/sections/Work";
 import ProcedureSection from "components/sections/Procedure";
@@ -45,11 +43,6 @@ export const Home = () => {
       </Head>
 
       <Navbar color={navTheme[section]} />
-      <Link href="/" passHref>
-        <Logo
-          url={navTheme[section] == "white" ? "/logo-white.png" : "/logo.png"}
-        />
-      </Link>
       <SlickSlider
         ref={sliderRef}
         draggable={false}

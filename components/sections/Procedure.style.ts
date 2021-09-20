@@ -6,21 +6,31 @@ export const Container = styled.div<{ url: string }>`
   background: var(--color-blue);
   background-image: url(${({ url }) => url});
   background-size: cover;
-  background-position: bottom left;
+  background-position: top left;
   width: 100vw;
   height: 100vh;
-  padding-top: 135px;
+  padding: 135px 0px;
   display: flex;
   position: relative;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   max-width: 1925px;
   margin: auto;
-`;
 
-export const Decoration = styled.img<{ position: "top" | "bottom" | string }>`
-  position: absolute;
-  ${({ position }) => position}: 0;
+  @media screen and (min-width: 2000px) {
+    justify-content: center;
+    row-gap: 50px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    padding: 100px 0px;
+  }
+
+  @media screen and (max-width: 1600px) {
+    padding-top: 13vh;
+    padding-bottom: 8vh;
+  }
 `;
 
 export const SelectorLine = styled.div`
@@ -38,22 +48,28 @@ export const Selector = styled.img`
 `;
 
 export const SelectorWrapper = styled.div`
-  margin-top: 140px;
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   padding-left: calc(120px + 80px + 27px);
+  max-width: 1920px;
+  margin-top: 100px;
+
+  @media screen and (max-width: 1600px) {
+    margin-top: 20px;
+  }
 `;
 
 export const SelectorSubWrapper = styled.div`
   width: calc(100vw - 240px - 80px * 2 - 27px);
+  max-width: calc(1920px - 240px - 80px * 2 - 27px);
   transition: all 0.2s ease-in-out;
 `;
 
 export const NavWrapper = styled.div`
   display: flex;
-  margin-top: 45px;
+  margin-top: 30px;
   width: 100vw;
   padding: 0 120px;
   justify-content: space-between;
@@ -91,8 +107,13 @@ export const ItemLabel = styled(H3)`
 `;
 
 export const Description = styled(B1)`
-  padding: 0 340px;
-  margin-top: 155px;
+  width: min(1500px, 100vw - 120px);
+  height: min(500px, 25vh);
+  margin-top: 150px;
   color: white;
   text-align: center;
+
+  @media screen and (max-width: 1600px) {
+    margin-top: 150px;
+  }
 `;
