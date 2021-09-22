@@ -20,6 +20,8 @@ export const Category = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  max-width: 1980px;
+  margin: auto;
   margin-top: 120px;
 
   @media screen and (max-width: 1600px) {
@@ -144,13 +146,4 @@ export const ColorWrapper = styled.div`
   flex-wrap: wrap;
   width: 150px;
   row-gap: 10px;
-`;
-
-export const PatternWrapper = styled.div`
-  margin-bottom: 36px;
-`;
-
-export const PatternImg = styled.img`
-  width: 250px;
-  height: 250px;
 `;

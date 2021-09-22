@@ -9,14 +9,14 @@ import {
   OptionContainer,
   CheckBox,
   ColorWrapper,
-  PatternWrapper,
-  PatternImg,
   FlippedWrapper,
 } from "styles/patterns.style";
 import Head from "next/head";
 import Navbar from "components/Navbar";
-import { B2, H3, H4 } from "styles/system";
+import { H3, H4 } from "styles/system";
 import { useState } from "react";
+import Pattern from "components/Pattern";
+import Link from "next/link";
 
 export const Option: React.FC<{ label?: string; color?: string }> = ({
   label,
@@ -39,20 +39,6 @@ interface PatternInterface {
   description?: string;
 }
 
-export const Pattern: React.FC<PatternInterface> = ({
-  title,
-  url,
-  preview,
-}) => {
-  return (
-    <PatternWrapper>
-      <PatternImg src={url} />
-      <H4 style={{ margin: "8px 0px" }}>{title}</H4>
-      <B2>{preview}</B2>
-    </PatternWrapper>
-  );
-};
-
 const SamplePattern: PatternInterface = {
   title: "KHO 01",
   url: "/samplePattern.png",
@@ -73,7 +59,11 @@ export const Patterns: React.FC = () => {
         <Item>Develop</Item>
         <Item>Apply</Item>
         <Item>Illustration</Item>
-        <SpecialItem>See Collection</SpecialItem>
+        <Link href="/collections" passHref>
+          <a>
+            <SpecialItem>See Collection</SpecialItem>
+          </a>
+        </Link>
       </Category>
       <Container>
         <SubContainer>

@@ -11,7 +11,11 @@ interface Props {
 const Navbar: React.FC<Props> = ({ color }) => {
   return (
     <List onClick={() => console.log("hi")}>
-      <Logo url={color == "white" ? "/logo-white.png" : "/logo.png"} />
+      <Link href="/" passHref>
+        <a>
+          <Logo url={color == "white" ? "/logo-white.png" : "/logo.png"} />
+        </a>
+      </Link>
       <SubList>
         <Link href="/" passHref>
           <Item>

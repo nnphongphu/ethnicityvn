@@ -19,7 +19,7 @@ export const Library: React.FC = () => {
             <H3 color="white">See Patterns</H3>
           </Box>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/collections" passHref>
           <Box>
             <H3 color="white">See Collection</H3>
           </Box>

@@ -28,7 +28,7 @@ export const Item = styled.a`
   }
 `;
 
-export const Logo = styled.a<{ url: string }>`
+export const Logo = styled.div<{ url: string }>`
   background-image: url(${({ url }) => url});
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -36,6 +36,7 @@ export const Logo = styled.a<{ url: string }>`
   height: 69px;
   width: 269px;
   transition: background-image 0.8s ease-in-out;
+  z-index: 2;
 `;
 
 export const SubList = styled.div`
