@@ -8,13 +8,16 @@ import Link from "next/link";
 
 export const Projects = () => {
   const sliderRef = useRef<any>(null);
-  const [center, setCenter] = useState(1);
+  const timelineRef = useRef<any>(null);
+  const [center, setCenter] = useState(0);
 
   const handleWheel = (e: WheelEvent) => {
     if (e.deltaY > 0) {
       sliderRef.current.slickNext();
+      timelineRef.current.slickNext();
     } else {
       sliderRef.current.slickPrev();
+      timelineRef.current.slickPrev();
     }
   };
 
@@ -32,7 +35,16 @@ export const Projects = () => {
     slidesToShow: 3,
     infinite: false,
     arrows: false,
-    initialSlide: 1,
+    initialSlide: 0,
+    draggable: false,
+  };
+
+  const timelineSettings = {
+    vertical: true,
+    slidesToShow: 3,
+    infinite: false,
+    arrows: false,
+    initialSlide: 0,
     draggable: false,
   };
 
@@ -61,8 +73,31 @@ export const Projects = () => {
             </div>
           </a>
         </Link>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            rowGap: "30px",
+          }}
+        >
           <H3>Timeline</H3>
+          <div style={{ display: "flex", alignItems: "flex-start" }}>
+            <img src="/timelineDecoration.svg" />
+            <TimelineSlider ref={timelineRef} {...timelineSettings}>
+              {Samples.map((sample, id) => (
+                <TimelineText key={sample.time} centerId={center} slideId={id}>
+                  {sample.time}
+                </TimelineText>
+              ))}
+              <TimelineText />
+              <TimelineText />
+            </TimelineSlider>
+            <img
+              style={{ transform: "scaleX(-1)" }}
+              src="/timelineDecoration.svg"
+            />
+          </div>
         </div>
       </div>
       <SlickSlider
@@ -136,36 +171,42 @@ interface Project {
 
 const Samples = [
   {
+    time: "Jun 2021",
     title: "Project with ISEE",
     thumbnail: "https://i.ibb.co/fXHSbn1/Group-1627.png",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat ",
   },
   {
+    time: "Jan 2021",
     title: "Project with ISEE",
     thumbnail: "https://i.ibb.co/ZLngRtY/Group-162.png",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat ",
   },
   {
+    time: "Aug 2020",
     title: "Project with ISEE",
     thumbnail: "https://i.ibb.co/vsnMbN5/Group-164.png",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat ",
   },
   {
+    time: "Jul 2020",
     title: "Project with ISEE",
     thumbnail: "https://i.ibb.co/fXHSbn1/Group-1627.png",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat ",
   },
   {
+    time: "May 2020",
     title: "Project with ISEE",
     thumbnail: "https://i.ibb.co/ZLngRtY/Group-162.png",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat ",
   },
   {
+    time: "Feb 2020",
     title: "Project with ISEE",
     thumbnail: "https://i.ibb.co/vsnMbN5/Group-164.png",
     description:
@@ -216,4 +257,17 @@ const SlideTitle = styled(H2)`
 
 const SlideDescription = styled(B1)`
   color: white;
+`;
+
+const TimelineText = styled(H3)<{ slideId?: number; centerId?: number }>`
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+  line-height: 124px;
+
+  ${({ slideId, centerId }) =>
+    slideId === centerId ? "color: var(--color-green);" : "height: auto;"}
+`;
+
+const TimelineSlider = styled(Slider)`
+  width: 180px;
 `;
