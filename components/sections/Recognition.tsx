@@ -1,20 +1,5 @@
-import { H1, H3 } from "styles/system";
-import {
-  Container,
-  Decoration,
-  ContentWrapper,
-  HighlightWrapper,
-  TriangleLeft,
-  TriangleRight,
-  CornerDecorationLeft,
-  CornerDecorationRight,
-  HighlightTitle,
-  HighlightContent,
-  PresentationWrapper,
-  LogoWrapper,
-  Logo,
-  Footer,
-} from "./Recognition.style";
+import styled from "styled-components";
+import { H3, B1, H1 } from "styles/system";
 
 export const RecognitionSection: React.FC = () => {
   return (
@@ -61,3 +46,130 @@ export const RecognitionSection: React.FC = () => {
 };
 
 export default RecognitionSection;
+
+export const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 1920px;
+  margin: auto;
+  padding-top: 50px;
+`;
+
+export const Decoration = styled.img`
+  position: absolute;
+  top: 0;
+`;
+
+export const ContentWrapper = styled.div`
+  width: 100%;
+  padding: 0 120px;
+  margin-top: 6vh;
+  margin-bottom: 110px;
+  display: flex;
+
+  @media screen and (max-width: 1600px) {
+    margin-top: 3vh;
+  }
+`;
+
+export const HighlightWrapper = styled.div`
+  width: 700px;
+  height: fit-content;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-red);
+  padding: 50px;
+  position: relative;
+
+  @media screen and (max-width: 1600px) {
+    width: 800px;
+  }
+`;
+
+export const TriangleLeft = styled.div`
+  width: 0;
+  height: 0;
+  border-top: 125px solid white;
+  border-right: 125px solid transparent;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+`;
+
+export const TriangleRight = styled.div`
+  width: 0;
+  height: 0;
+  border-bottom: 125px solid white;
+  border-left: 125px solid transparent;
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+`;
+
+export const CornerDecorationLeft = styled.img`
+  position: absolute;
+  top: -50px;
+  left: -50px;
+`;
+
+export const CornerDecorationRight = styled.img`
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  transform: rotate(180deg);
+`;
+
+export const HighlightTitle = styled(H3)``;
+
+export const HighlightContent = styled(B1)`
+  margin-top: 20px;
+
+  @media screen and (max-width: 1600px) {
+    margin-top: 10px;
+  }
+`;
+
+export const PresentationWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 158px;
+
+  @media screen and (max-width: 1600px) {
+    margin-left: 100px;
+  }
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+`;
+
+export const Logo = styled.img`
+  height: 10vh;
+  width: auto;
+
+  @media screen and (min-width: 1800px) {
+    height: 110px;
+  }
+`;
+
+export const Footer = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  padding: 25px 0;
+  background-color: var(--color-red);
+
+  @media screen and (max-width: 1600px) {
+    padding: 10px 0;
+  }
+`;

@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import Head from "next/head";
 import Navbar from "components/Navbar";
-import { SlickSlider } from "styles/collections.style";
 import Collection from "components/Collection";
+import styled from "styled-components";
+import Slider from "react-slick";
 
 export const Collections = () => {
   const sliderRef = useRef<any>(null);
@@ -28,7 +29,7 @@ export const Collections = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar color="black" />
+      <Navbar color="black" whiteLogo={true} />
       <SlickSlider
         ref={sliderRef}
         draggable={false}
@@ -45,3 +46,11 @@ export const Collections = () => {
 };
 
 export default Collections;
+
+const SlickSlider = styled(Slider)`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+`;

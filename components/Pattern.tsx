@@ -1,6 +1,6 @@
 import { B2, H4 } from "styles/system";
 import Link from "next/link";
-import { PatternImg, PatternWrapper } from "./Pattern.style";
+import styled from "styled-components";
 
 interface PatternInterface {
   title: string;
@@ -19,11 +19,30 @@ export const Pattern: React.FC<PatternInterface> = ({
       <Link href="/pattern/1" passHref>
         <a>
           <PatternImg src={url} />
-          <H4 style={{ margin: "8px 0px" }}>{title}</H4>
+          <H4 style={{ margin: "8px 0px", height: 30 }}>{title}</H4>
         </a>
       </Link>
-      <B2>{preview}</B2>
+      <Preview>{preview}</Preview>
     </PatternWrapper>
   );
 };
+
 export default Pattern;
+
+const Preview = styled(B2)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  width: 250px;
+`;
+
+const PatternWrapper = styled.div`
+  margin-bottom: 36px;
+`;
+
+const PatternImg = styled.img`
+  width: 250px;
+  height: 250px;
+`;

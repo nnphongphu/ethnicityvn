@@ -1,12 +1,13 @@
 import Head from "next/head";
 import Navbar from "components/Navbar";
-import { SlickSlider } from "styles/index.style";
 import LandingSection from "components/sections/Landing";
 import WorkSection from "components/sections/Work";
 import ProcedureSection from "components/sections/Procedure";
 import TeamSection from "components/sections/Team";
 import RecognitionSection from "components/sections/Recognition";
 import React, { useRef, useEffect, useState } from "react";
+import styled from "styled-components";
+import Slider from "react-slick";
 import Modal from "react-modal";
 
 const navTheme = ["white", "black", "white", "black", "black"];
@@ -63,3 +64,11 @@ export const Home = () => {
 };
 
 export default Home;
+
+const SlickSlider = styled(Slider)`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+`;
