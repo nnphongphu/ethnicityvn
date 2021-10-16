@@ -4,7 +4,7 @@ import { H3, H4 } from "styles/system";
 import { useState } from "react";
 import Pattern from "components/Pattern";
 import styled from "styled-components";
-import Link from "next/link";
+import PatternModal from "components/PatternModal";
 
 export const Option: React.FC<{ label?: string; color?: string }> = ({
   label,
@@ -43,17 +43,7 @@ export const Patterns: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar color="black" />
-      <Category>
-        <Item active={true}>Preserve</Item>
-        <Item>Develop</Item>
-        <Item>Apply</Item>
-        <Item>Illustration</Item>
-        <Link href="/collections" passHref>
-          <a>
-            <SpecialItem>See Collection</SpecialItem>
-          </a>
-        </Link>
-      </Category>
+      <Line />
       <Container>
         <SubContainer>
           <FilterWrapper>
@@ -76,12 +66,12 @@ export const Patterns: React.FC = () => {
               <Option color="purple" />
               <Option color="purple-v2" />
             </ColorWrapper>
-            <H4 style={{ marginTop: 20, marginBottom: 5 }}>Collections</H4>
-            <Option label="Nature of Ma" />
-            <Option label="Lively the lives" />
-            <Option label="In the Wild" />
+            <H4 style={{ marginTop: 20, marginBottom: 5 }}>Produced by</H4>
+            <Option label="Ethnicity" />
+            <Option label="Partner A" />
+            <H4 style={{ marginTop: 20, marginBottom: 5 }}>Availability</H4>
+            <Option label="Show available products only" />
           </FilterWrapper>
-          <Line />
           <FlippedWrapper>
             <PatternsWrapper>
               <Pattern {...SamplePattern} />
@@ -100,6 +90,7 @@ export const Patterns: React.FC = () => {
           </FlippedWrapper>
         </SubContainer>
       </Container>
+      <PatternModal />
     </>
   );
 };
@@ -119,42 +110,13 @@ const Container = styled.div`
   max-height: 750px;
 `;
 
-const Category = styled.div`
-  background-color: var(--color-neutral);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  max-width: 1980px;
-  margin: auto;
+const Line = styled.div`
+  width: calc(100% - 240px);
+  height: 13px;
+  background-color: #f8f8f8;
   margin-top: 120px;
-
-  @media screen and (max-width: 1600px) {
-    margin-top: 100px;
-  }
-`;
-
-const Item = styled(H4)<{ active?: boolean }>`
-  margin: 10px 50px;
-  border-radius: 50px;
-  padding: 10px 23px;
-  padding-top: 5px;
-  cursor: pointer;
-  ${({ active }) =>
-    active ? " border: 1px solid; border-color: var(--color-red);" : ""}
-`;
-
-const SpecialItem = styled(H4)`
-  position: absolute;
-  right: 0;
-  color: white;
-  background-color: var(--color-red);
-  height: 100%;
-  padding: 0 30px;
-  display: flex;
-  align-items: center;
-  padding-bottom: 5px;
-  cursor: pointer;
+  margin-left: 120px;
+  margin-right: 120px;
 `;
 
 const SubContainer = styled.div`
@@ -208,8 +170,16 @@ const PatternsWrapper = styled.div`
   height: 100%;
   padding-right: 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 20px;
+
+  @media screen and (max-width: 1600px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 const OptionContainer = styled.div`
@@ -225,6 +195,8 @@ const CheckBox = styled.div<{ active?: boolean; color?: string }>`
   margin-right: 13px;
   width: 20px;
   height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   cursor: pointer;
   position: relative;
   background-color: ${({ active, color }) => {
@@ -236,6 +208,8 @@ const CheckBox = styled.div<{ active?: boolean; color?: string }>`
     content: "";
     width: 10px;
     height: 10px;
+    min-width: 10px;
+    min-height: 10px;
     border-radius: 50%;
     background-color: white;
     position: absolute;
@@ -250,11 +224,4 @@ const ColorWrapper = styled.div`
   flex-wrap: wrap;
   width: 150px;
   row-gap: 10px;
-`;
-
-const Line = styled.div`
-  width: 2px;
-  height: 100%;
-  margin-right: 50px;
-  background-color: black;
 `;

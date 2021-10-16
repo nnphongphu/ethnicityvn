@@ -29,7 +29,7 @@ export const Collections = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar color="black" whiteLogo={true} />
+      <Navbar color="black" hideLogo={true} />
       <SlickSlider
         ref={sliderRef}
         draggable={false}

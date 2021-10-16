@@ -15,15 +15,17 @@ export const Pattern: React.FC<PatternInterface> = ({
   preview,
 }) => {
   return (
-    <PatternWrapper>
-      <Link href="/pattern/1" passHref>
-        <a>
-          <PatternImg src={url} />
-          <H4 style={{ margin: "8px 0px", height: 30 }}>{title}</H4>
-        </a>
-      </Link>
-      <Preview>{preview}</Preview>
-    </PatternWrapper>
+    <>
+      <PatternWrapper>
+        <Link href={`?patternId=1`} as={`/patterns/1`} passHref>
+          <a>
+            <PatternImg src={url} />
+            <H4 style={{ margin: "8px 0px", height: 30 }}>{title}</H4>
+          </a>
+        </Link>
+        <Preview>{preview}</Preview>
+      </PatternWrapper>
+    </>
   );
 };
 
@@ -35,14 +37,18 @@ const Preview = styled(B2)`
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  width: 250px;
+  width: 100%;
 `;
 
 const PatternWrapper = styled.div`
   margin-bottom: 36px;
 `;
 
-const PatternImg = styled.img`
-  width: 250px;
-  height: 250px;
+const PatternImg = styled.div<{ src: string }>`
+  background-image: url(${({ src }) => src});
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
 `;

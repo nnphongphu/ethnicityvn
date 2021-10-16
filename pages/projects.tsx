@@ -78,10 +78,11 @@ export const Projects = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
             rowGap: "30px",
+            height: "100%",
           }}
         >
-          <H3>Timeline</H3>
           <div style={{ display: "flex", alignItems: "flex-start" }}>
             <img src="/timelineDecoration.svg" />
             <TimelineSlider ref={timelineRef} {...timelineSettings}>

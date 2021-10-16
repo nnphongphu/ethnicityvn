@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { H1, H4, B1 } from "styles/system";
 import Pattern from "components/Pattern";
 import Link from "next/link";
+import Slider from "react-slick";
+import { useRef } from "react";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import PatternModal from "./PatternModal";
 
 interface PatternInterface {
   title: string;
@@ -18,46 +22,96 @@ const SamplePattern: PatternInterface = {
 };
 
 export const Collection: React.FC<{ title: string }> = ({ title }) => {
+  const settings = {
+    arrows: false,
+    draggable: false,
+    autoplay: true,
+    infinite: true,
+    speed: 500,
+    autoplaySpeed: 3000,
+    pauseOnHover: false,
+    slidesToShow: 3,
+    initialSlide: 2,
+  };
+
+  const sliderRef = useRef<any>(null);
+
+  const handleClick = (delta: Number) => {
+    if (delta > 0) {
+      sliderRef.current.slickNext();
+    } else {
+      sliderRef.current.slickPrev();
+    }
+  };
+
   return (
-    <Container>
-      <CoverContainer url="/collectionCover.png">
-        <Title>{title}</Title>
-        <Description>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-          modo consequat. Duis autem vel eum iriure dolor in hendrerit in
-          vulputate
-        </Description>
-      </CoverContainer>
-      <SubContainer>
-        <Link href="/patterns" passHref>
-          <a>
-            <Button>See patterns</Button>
-          </a>
-        </Link>
-        <PatternsWrapper>
-          <Pattern {...SamplePattern} />
-          <Pattern {...SamplePattern} />
-          <Pattern {...SamplePattern} />
-          <Pattern {...SamplePattern} />
-          <Pattern {...SamplePattern} />
-          <Pattern {...SamplePattern} />
-        </PatternsWrapper>
-        <DownloadButton>Download Collection</DownloadButton>
-      </SubContainer>
-    </Container>
+    <>
+      <Container>
+        <CoverContainer url="/collectionCover.png">
+          <Title>{title}</Title>
+          <Description>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+            consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
+            velit esse molestie consequat, vel illum dolore eu feugiat nulla
+            facilisis at vero eros et accumsan et iusto odio dignissim qui
+            blandit praesent luptatum zzril delenit augue duis dolore te feugait
+            nulla facilisi. modo consequat. Duis autem vel eum iriure dolor in
+            hendrerit in vulputate
+          </Description>
+        </CoverContainer>
+        <SubContainer>
+          <Link href="/patterns" passHref>
+            <a>
+              <Button>See patterns</Button>
+            </a>
+          </Link>
+          <SliderContainer>
+            <RiArrowLeftSLine
+              onClick={() => handleClick(-1)}
+              type="prev"
+              size="300px"
+              cursor="pointer"
+              style={{ transform: "translateY(-70px)" }}
+            />
+            <PatternsWrapper ref={sliderRef} {...settings}>
+              <div>
+                <Pattern {...SamplePattern} />
+              </div>
+              <div>
+                <Pattern {...SamplePattern} />
+              </div>
+              <div>
+                <Pattern {...SamplePattern} />
+              </div>
+              <div>
+                <Pattern {...SamplePattern} />
+              </div>
+              <div>
+                <Pattern {...SamplePattern} />
+              </div>
+            </PatternsWrapper>
+            <RiArrowRightSLine
+              onClick={() => handleClick(1)}
+              type="next"
+              size="300px"
+              cursor="pointer"
+              style={{ transform: "translateY(-70px)" }}
+            />
+          </SliderContainer>
+          <DownloadButton>Download Collection</DownloadButton>
+        </SubContainer>
+      </Container>
+      <PatternModal />
+    </>
   );
 };
 
 export default Collection;
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -67,7 +121,7 @@ export const Container = styled.div`
   margin: auto;
 `;
 
-export const CoverContainer = styled.div<{ url: string }>`
+const CoverContainer = styled.div<{ url: string }>`
   height: 100vh;
   width: min(600px, 35%);
   max-height: 1080px;
@@ -78,7 +132,7 @@ export const CoverContainer = styled.div<{ url: string }>`
     url(${({ url }) => url});
 `;
 
-export const Title = styled(H1)`
+const Title = styled(H1)`
   color: white;
   height: max-content;
   position: absolute;
@@ -88,7 +142,7 @@ export const Title = styled(H1)`
   top: 50%;
 `;
 
-export const Description = styled(B1)`
+const Description = styled(B1)`
   color: white;
   margin-left: 50px;
   font-size: 18px;
@@ -96,15 +150,21 @@ export const Description = styled(B1)`
   margin-right: 100px;
   margin-bottom: 60px;
   text-align: center;
+
+  @media screen and (max-width: 1600px) {
+    font-size: 12px;
+    line-height: 120%;
+  }
 `;
 
-export const SubContainer = styled.div`
+const SubContainer = styled.div`
   width: 100%;
   padding-top: 120px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-image: url(/collectionBg.png);
   background-size: 100% 954px;
   max-height: 1080px;
@@ -116,7 +176,7 @@ export const SubContainer = styled.div`
   }
 `;
 
-export const Button = styled(H4)`
+const Button = styled(H4)`
   position: absolute;
   right: 0;
   top: 120px;
@@ -130,23 +190,33 @@ export const Button = styled(H4)`
   background-color: var(--color-blue);
 `;
 
-export const PatternsWrapper = styled.div`
-  width: 100%;
-  padding: 0 250px;
-  margin-top: min(77px, 10vh);
+const SliderContainer = styled.div`
+  padding: 0 200px;
+  display: flex;
+  margin-top: min(100px, 15vh);
+  align-items: center;
+
+  @media screen and (max-width: 1600px) {
+    padding: 0 80px;
+  }
+`;
+
+const PatternsWrapper = styled(Slider)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  column-gap: 20px;
-  height: min(800px, 70vh);
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
+  max-height: min(400px, 50vh);
 
   ::-webkit-scrollbar {
     width: 0;
   }
+
+  & div {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 `;
 
-export const DownloadButton = styled(H4)`
+const DownloadButton = styled(H4)`
   margin: 20px 0px;
   color: white;
   background-color: var(--color-blue);

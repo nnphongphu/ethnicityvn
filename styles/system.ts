@@ -56,3 +56,12 @@ export const B2 = styled.span<{ color?: string }>`
   font-size: 14px;
   color: var(--color-${({ color }) => (color ? color : "text")});
 `;
+
+export const Button = styled(H4)`
+  width: fit-content;
+  background-color: var(--color-red);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+`;

@@ -7,18 +7,21 @@ import Link from "next/link";
 interface Props {
   color?: colorName;
   whiteLogo?: boolean;
+  hideLogo?: boolean;
 }
 
-const Navbar: React.FC<Props> = ({ color, whiteLogo }) => {
+const Navbar: React.FC<Props> = ({ color, whiteLogo, hideLogo }) => {
   return (
     <List>
       <Link href="/" passHref>
         <a>
-          <Logo
-            url={
-              color == "white" || whiteLogo ? "/logo-white.png" : "/logo.png"
-            }
-          />
+          {!!hideLogo === false && (
+            <Logo
+              url={
+                color === "white" || whiteLogo ? "/logo-white.png" : "/logo.png"
+              }
+            />
+          )}
         </a>
       </Link>
       <SubList>
@@ -37,7 +40,7 @@ const Navbar: React.FC<Props> = ({ color, whiteLogo }) => {
             <H4 color={color}>Discover</H4>
           </Item>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/store" passHref>
           <Item>
             <H4 color={color}>Store</H4>
           </Item>
@@ -95,4 +98,8 @@ export const Logo = styled.div<{ url: string }>`
 
 export const SubList = styled.div`
   display: flex;
+
+  @media screen and (max-width: 1500px) {
+    padding-top: 20px;
+  }
 `;
